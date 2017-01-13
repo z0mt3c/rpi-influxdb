@@ -14,11 +14,11 @@ RUN chmod +x /usr/bin/influx*
 ENV INFLUXDB_INIT_USER root
 ENV INFLUXDB_INIT_PWD root
 
-# Admin server
 EXPOSE 8083
-# HTTP API
 EXPOSE 8086
+EXPOSE 8088
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["entrypoint.sh"]
+
 CMD ["influxd"]
